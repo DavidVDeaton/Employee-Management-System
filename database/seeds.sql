@@ -1,5 +1,5 @@
--- open The employeetracker DB
-USE employeetracker;
+-- open The EMS DB
+USE EMS;
 
 INSERT INTO department (name)
 VALUES ("Suns"),

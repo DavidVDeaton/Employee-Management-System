@@ -1,9 +1,8 @@
--- Schema for SQL database/table
-DROP DATABASE IF EXISTS employeetracker;
+DROP DATABASE IF EXISTS ems;
 
 /* Create database */
-CREATE DATABASE employeetracker;
-USE employeetracker;
+CREATE DATABASE ems;
+USE ems;
 
 /* Create department table with 
 1. deparment id - primary key that auto-increments
