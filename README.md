@@ -7,7 +7,6 @@ Employee Management System
 - [Project Name](#project-name)
 - [Table of contents](#table-of-contents)
 - [General info](#general-info)
-- [Features](#features)
 - [Installation](#installation)
 - [User Guide](#user-guide)
 - [Code Style](#code-style)
@@ -18,37 +17,7 @@ Employee Management System
 
 # General info
 
-This project is to bulid a application to track all the employee data where the data will read or write into a database.
-
-For the feature of the site, please visit the [Features](#features) section for more details.
-
-# Features
-
-In this application, the following features have been applied:
-
-1. All the data is read from or written from the employeetracker database
-2. The user can perform the following function from this application:
-   | Options | Description |
-   | :----------: | :--------------------------------: | :----------: |
-   | View all employees | Generate a table for a full employee list |
-   | View all employees by department | Generate a table for a full employee list under the selected department |
-   | View all employees by roles | Generate a table for a full employee list under the selected role |
-   | View all employees by Manager | Generate a table for a full employee list under the selected manager |
-   | View all Manager | Generate a table for a full manager list |
-   | View Total Salary Spending | Generate the total salary and a salary table by department level |
-   | Add a new employee | Add a new employee to the database |
-   | View all departments | Generate a table for a departments list |
-   | View Salary Spending by Department | Generate the total salary of the department and a salary table by job level / staff level |
-   | Add a new department | Add a new department to the database |
-   | View all roles | Generate a table for a roles list |
-   | Add a new role | Add a new role to the database |
-   | Update employee role | Update the role of an existing staff |
-   | Update employee's manager | Update the manager of an existing staff |
-   | Update employee's First name | Update the first name of an existing staff |
-   | Update employee's Last name | Update the last name of an existing staff |
-   | Exit the application | Quit the application |
-3. All roles / departments (except add a new role / department) will be presented in a list for selection where required.
-4. The employee without a manager will keep the manager_id as 'Null' (Please select 'None' if the employee has no manager).
+This project is to bulid a application to track employee data.  It will read or write the data into a database.
 
 # Installation
 
