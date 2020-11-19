@@ -1,5 +1,5 @@
--- open The EMS DB
-USE EMS;
+-- open ems DB
+USE ems;
 
 INSERT INTO department (name)
 VALUES ("Suns"),

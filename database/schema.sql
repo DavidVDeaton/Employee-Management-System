@@ -1,3 +1,4 @@
+-- Schema for SQL database/table
 DROP DATABASE IF EXISTS ems;
 
 /* Create database */
