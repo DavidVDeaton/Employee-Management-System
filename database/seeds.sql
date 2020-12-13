@@ -1,13 +1,13 @@
-USE employees;
+USE ems;
 
-INSERT INTO department (name)
+INSERT INTO department (team)
 VALUES 
     ("Suns"),
     ("Lakers"),
     ("Celtics");
 
 INSERT INTO role
-    (title, salary, departmentid)
+    (position, salary, departmentid)
 VALUES 
     ("Coach of Suns", 500000, 1),
     ("Suns MVP", 20000000, 1),

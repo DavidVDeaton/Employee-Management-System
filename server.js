@@ -2,6 +2,8 @@ const { prompt } = require('inquirer');
 const db = require('./database');
 require('console.table');
 
+loadPrompts();
+
 async function loadPrompts() {
   const { answer } = await prompt([
     {
@@ -73,7 +75,7 @@ async function addEmployees() {
 	  `Added employee to the database.`
 	);
   
-	loadMainPrompts();
+	loadPrompts();
 }
 
 async function addDepartments() {
@@ -88,7 +90,7 @@ async function addDepartments() {
   
 	console.log(`Added department to the database.`);
   
-	loadMainPrompts();
+	loadPrompts();
 }
 
 async function addRoles() {
@@ -120,7 +122,7 @@ async function addRoles() {
   
 	console.log(`Added role to the database.`);
   
-	loadMainPrompts();
+	loadPrompts();
 }
 
 async function viewDepartments() {
@@ -128,7 +130,7 @@ async function viewDepartments() {
   
 	console.table(departments);
   
-	loadMainPrompts();
+	loadPrompts();
 }
 
 async function viewRoles() {
@@ -136,7 +138,7 @@ async function viewRoles() {
 
 	console.table(roles);
   
-	loadMainPrompts();
+	loadPrompts();
 }
 
 async function viewEmployees() {
@@ -184,5 +186,5 @@ async function updateEmployeeRole() {
 
   console.log('Update role.');
 
-  loadMainPrompts();
+  loadPrompts();
 }
