@@ -20,7 +20,7 @@ Employee Management System
 This project is to bulid a application to track employee data.  It will read or write the data into a database.
 
 # Video Demo
-![Video Demo](assets/EMS-HW12.mp4)
+![Video Demo](./assets/EMS-HW12.gif)
 
 # Installation
 
