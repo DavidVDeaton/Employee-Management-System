@@ -1,8 +1,6 @@
 const { prompt } = require('inquirer');
-const db = require('./db');
+const db = require('./database');
 require('console.table');
-
-init();
 
 async function loadPrompts() {
   const { answer } = await prompt([
