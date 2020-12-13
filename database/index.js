@@ -8,7 +8,7 @@ class DB {
 
   findEmployees() {
     return this.connection.query(
-      "SELECT employee.id, employee.firstname, employee.lastname, role.position AS role, department.team AS department, role.salary AS role;"
+      "SELECT * FROM employee ORDER BY employee.id;"
     );
   }
 
@@ -25,7 +25,7 @@ class DB {
 
   findRoles() {
     return this.connection.query(
-      "SELECT role.id, role.position, department.team AS department, role.salary FROM role LEFT JOIN department on role.departmentid = department.id;"
+      "SELECT * FROM role ORDER BY role.id;"
     );
   }
 
@@ -36,7 +36,7 @@ class DB {
 
   findDepartments() {
     return this.connection.query(
-      "SELECT department.id, department.team;"
+      "SELECT * FROM department ORDER BY department.id;"
     );
   }
 

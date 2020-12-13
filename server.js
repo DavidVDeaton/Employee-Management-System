@@ -1,11 +1,25 @@
-const { prompt } = require('inquirer');
-const db = require('./Database');
-const prompts = require('./prompt.js');
 const inquirer = require('inquirer');
+const db = require('./Database');
 require('console.table');
 
+loadPrompts();
+
 async function loadPrompts() {
-	inquirer.prompt(prompts.loadPrompts)
+	inquirer.prompt({
+		type: 'list',
+		name: 'choices',
+		message: 'What would you like to do?',
+		choices: 
+		[
+			'Add Departments',
+			'Add Roles',
+			'Add Employees',
+			'View Departments',
+			'View Roles',
+			'View Employees',
+			'Update Employee Role',
+		]
+	})
 	.then((answer) => {
 		switch (answer.choices) {
 			
@@ -25,14 +39,14 @@ async function loadPrompts() {
 			break;
 
 		}
- 	})
+ 	});
 }
 
 async function addEmployees() {
 	const roles = await db.findRoles();
 	const employees = await db.findEmployees();
   
-	const employee = await prompt([
+	const employee = await inquirer.prompt([
 	  {
 		name: 'firstname',
 		message: 'Input first name.'
@@ -48,9 +62,9 @@ async function addEmployees() {
 	  value: id
 	}));
   
-	const { roleId } = await prompt({
+	const roleId = await inquirer.prompt({
 	  type: 'list',
-	  name: 'roleId',
+	  name: 'position',
 	  message: 'Select the employee role.',
 	  choices: roleList
 	});
@@ -67,9 +81,9 @@ async function addEmployees() {
 }
 
 async function addDepartments() {
-	const department = await prompt([
+	const department = await inquirer.prompt([
 	  {
-		name: 'name',
+		name: 'team',
 		message: 'Name the new department.'
 	  }
 	]);
@@ -89,9 +103,9 @@ async function addRoles() {
 	  value: id
 	}));
   
-	const role = await prompt([
+	const role = await inquirer.prompt([
 	  {
-		name: 'title',
+		name: 'position',
 		message: 'Name the new role.'
 	  },
 	  {
@@ -114,9 +128,9 @@ async function addRoles() {
 }
 
 async function viewDepartments() {
-	const departments = await db.findDepartments();
+	const department = await db.findDepartments();
   
-	console.table(departments);
+	console.table(department);
   
 	loadPrompts();
 }
@@ -145,7 +159,7 @@ async function updateEmployeeRole() {
     value: id
   }));
 
-  const { employeeId } = await prompt([
+  const { employeeId } = await inquirer.prompt([
     {
       type: 'list',
       name: 'employeeId',
@@ -161,7 +175,7 @@ async function updateEmployeeRole() {
     value: id
   }));
 
-  const { roleId } = await prompt([
+  const { roleId } = await inquirer.prompt([
     {
       type: 'list',
       name: 'roleId',
