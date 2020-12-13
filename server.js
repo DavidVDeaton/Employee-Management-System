@@ -1,5 +1,5 @@
 const { prompt } = require('inquirer');
-const db = require('./database');
+const db = require('./Database');
 require('console.table');
 
 loadPrompts();
@@ -10,32 +10,54 @@ async function loadPrompts() {
       type: 'list',
       name: 'choice',
       message: 'What would you like to do?',
-      choices: [
-		'Add Departments',
-		'Add Roles',
-		'Add Employees',
-		'View Departments',
-		'View Roles',
-		'View Employees',
-		'Update Employee Role',
+	  choices: 
+	  [
+		{
+			name: 'Add Departments',
+			value: 1
+		},
+		{
+			name: 'Add Roles',
+			value: 2
+		},
+		{
+			name: 'Add Employees',
+			value: 3
+		},
+		{
+			name: 'View Departments',
+			value: 4
+		},
+		{
+			name: 'View Roles',
+			value: 5
+		},
+		{
+			name: 'View Employees',
+			value: 6
+		},
+		{
+			name: 'Update Employee Role',
+			value: 7
+		}
 	  ],
 	}
 ]);
 
   switch (answer) {
-    case 'Add Departments':
+    case 1:
 	  	return addDepartments();
-	case 'Add Roles':
+	case 2:
 		return addRoles();
-	case 'Add Employees':
+	case 3:
 		return addEmployees();
-	case 'View Departments':
+	case 4:
       	return viewDepartments();
-    case 'View Roles':
+    case 5:
 		return viewRoles();
-	case 'View Employees':
+	case 6:
 		return viewEmployees();
-	case 'Update Employee Role':
+	case 7:
       	return updateEmployeeRole();
   }
 }
@@ -134,7 +156,7 @@ async function viewDepartments() {
 }
 
 async function viewRoles() {
-	const roles = await db.findAllRoles();
+	const roles = await db.findRoles();
 
 	console.table(roles);
   
