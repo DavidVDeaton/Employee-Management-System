@@ -1,65 +1,31 @@
 const { prompt } = require('inquirer');
 const db = require('./Database');
+const prompts = require('./prompt.js');
+const inquirer = require('inquirer');
 require('console.table');
 
-loadPrompts();
-
 async function loadPrompts() {
-  const { answer } = await prompt([
-    {
-      type: 'list',
-      name: 'choice',
-      message: 'What would you like to do?',
-	  choices: 
-	  [
-		{
-			name: 'Add Departments',
-			value: 1
-		},
-		{
-			name: 'Add Roles',
-			value: 2
-		},
-		{
-			name: 'Add Employees',
-			value: 3
-		},
-		{
-			name: 'View Departments',
-			value: 4
-		},
-		{
-			name: 'View Roles',
-			value: 5
-		},
-		{
-			name: 'View Employees',
-			value: 6
-		},
-		{
-			name: 'Update Employee Role',
-			value: 7
-		}
-	  ],
-	}
-]);
+	inquirer.prompt(prompts.loadPrompts)
+	.then((answer) => {
+		switch (answer.choices) {
+			
+			case 'Add Departments': addDepartments();
+			break;
+			case 'Add Roles': addRoles();
+			break;
+			case 'Add Employees': addEmployees();
+			break;
+			case 'View Departments': viewDepartments();
+			break;
+			case 'View Roles': viewRoles();
+			break;
+			case 'View Employees': viewEmployees();
+			break;
+			case 'Update Employee Role': updateEmployeeRole();
+			break;
 
-  switch (answer) {
-    case 1:
-	  	return addDepartments();
-	case 2:
-		return addRoles();
-	case 3:
-		return addEmployees();
-	case 4:
-      	return viewDepartments();
-    case 5:
-		return viewRoles();
-	case 6:
-		return viewEmployees();
-	case 7:
-      	return updateEmployeeRole();
-  }
+		}
+ 	})
 }
 
 async function addEmployees() {
@@ -77,8 +43,8 @@ async function addEmployees() {
 	  }
 	]);
   
-	const roleList = roles.map(({ id, title }) => ({
-	  name: title,
+	const roleList = roles.map(({ id, position }) => ({
+	  name: position,
 	  value: id
 	}));
   
@@ -89,7 +55,7 @@ async function addEmployees() {
 	  choices: roleList
 	});
   
-	employees.role_id = roleId;
+	employees.roleid = roleId;
   
 	await db.createEmployee(employee);
   
@@ -108,7 +74,7 @@ async function addDepartments() {
 	  }
 	]);
   
-	await db.createDepartment(department);
+	await db.createDepartments(department);
   
 	console.log(`Added department to the database.`);
   
